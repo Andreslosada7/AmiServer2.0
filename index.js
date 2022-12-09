@@ -1,14 +1,10 @@
 const express = require("express");
-const product = require("./api/product");
 const app = express();
-require("dotenv").config;
+const product = require("./api/product");
+
+app.use(express.json({ extended: false }));
 
 app.use("/api/product", product);
 
-app.listen(process.env.PORT || 3000, () => {
-  console.log("Escuchando en el puerto " + process.env.PORT);
-});
-
-/*app.get('/', (req, res)=>{
-    res.send('Si está funcionando correctamente gracias a Dios.')
-})*/
+const PORT = process.env.PORT || 8080;
+app.listen(PORT, () => console.log(`Server is running in port ${PORT}`));
