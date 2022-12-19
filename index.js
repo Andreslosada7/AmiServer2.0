@@ -5,11 +5,13 @@ const app = express();
 
 const paymentMethodRouter = require("./routes/paymentMethod");
 const productRouter = require("./routes/product");
+const categoriesRouter = require('./routes/category')
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use("/api/product", productRouter);
+app.use("/api/category", categoriesRouter);
 app.use("/api/paymentmethod", paymentMethodRouter);
 app.get("/", (req, res) => {
   res.json({
