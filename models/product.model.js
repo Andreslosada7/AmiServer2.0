@@ -1,5 +1,6 @@
 const db = require("../database/database");
 const { DataTypes } = require("sequelize");
+const CategoryModel = require("./category.model");
 
 const ProductModel = db.define("products", {
   id_product: {
@@ -27,10 +28,9 @@ const ProductModel = db.define("products", {
     type: DataTypes.INTEGER,
     allowNull: true,
   },
-  price: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-  },
 });
+
+ProductModel.belongsTo(CategoryModel, { foreingkey: "FK_products_categories" });
+CategoryModel.hasMany(ProductModel, { foreingkey: "FK_products_categories" });
 
 module.exports = ProductModel;

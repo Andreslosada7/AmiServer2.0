@@ -26,6 +26,7 @@ const RecordProductModel = db.define("records_products", {
   },
 });
 
+
 //Relations with products
 RecordProductModel.belongsTo(ProductModel, {
   foreingkey: "FK_records_products_products",
