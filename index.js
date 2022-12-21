@@ -5,8 +5,9 @@ const app = express();
 
 const paymentMethodRouter = require("./routes/paymentMethod");
 const productRouter = require("./routes/product");
-const categoriesRouter = require('./routes/category')
-const recordRouter = require('./routes/record')
+const categoriesRouter = require("./routes/category");
+const recordRouter = require("./routes/record");
+const recordProductRouter = require("./routes/recordProducts");
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -15,6 +16,8 @@ app.use("/api/product", productRouter);
 app.use("/api/category", categoriesRouter);
 app.use("/api/paymentmethod", paymentMethodRouter);
 app.use("/api/record", recordRouter);
+app.use("/api/recordproduct", recordProductRouter);
+
 app.get("/", (req, res) => {
   res.json({
     status: 200,

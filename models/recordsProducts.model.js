@@ -4,11 +4,17 @@ const ProductModel = require("../models/product.model");
 const RecordModel = require("../models/record.model");
 
 const RecordProductModel = db.define("records_products", {
-  record_id: {
+  id_records_products: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    autoIncrement: true,
+    primaryKey: true,
+  },
+  recordIdRecord: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  product_id: {
+  productIdProduct: {
     type: DataTypes.STRING,
     allowNull: false,
   },
@@ -25,7 +31,6 @@ const RecordProductModel = db.define("records_products", {
     allowNull: false,
   },
 });
-
 
 //Relations with products
 RecordProductModel.belongsTo(ProductModel, {
