@@ -8,9 +8,12 @@ const productRouter = require("./routes/product");
 const categoriesRouter = require("./routes/category");
 const recordRouter = require("./routes/record");
 const recordProductRouter = require("./routes/recordProducts");
+const cors = require('cors');
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/product", productRouter);
 app.use("/api/category", categoriesRouter);

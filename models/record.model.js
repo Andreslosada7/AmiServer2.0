@@ -10,6 +10,10 @@ const RecordModel = db.define("records", {
     primaryKey: true,
     autoIncrement: true,
   },
+  type: {
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
   title: {
     type: DataTypes.STRING,
     allowNull: false,
@@ -32,7 +36,11 @@ const RecordModel = db.define("records", {
   },
 });
 
-RecordModel.belongsTo(PaymentMethodModel, { foreingkey: "FK_records_payment_methods" });
-PaymentMethodModel.hasMany(RecordModel, { foreingkey: "FK_records_payment_methods" });
+RecordModel.belongsTo(PaymentMethodModel, {
+  foreingkey: "FK_records_payment_methods",
+});
+PaymentMethodModel.hasMany(RecordModel, {
+  foreingkey: "FK_records_payment_methods",
+});
 
 module.exports = RecordModel;
