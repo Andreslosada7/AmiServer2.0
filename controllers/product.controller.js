@@ -37,6 +37,9 @@ ProductController.getProduct = async (req, res) => {
       where: {
         id_product: req.params.id,
       },
+      include: {
+        model: CategoryModel,
+      },
     });
     res.json(product[0]);
   } catch (error) {
